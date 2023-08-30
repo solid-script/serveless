@@ -1,0 +1,16 @@
+{
+  "name": "serveless",
+  "version": "1.0.0",
+  "description": "Solid Scripts for Serverless. : Centralized collection of reusable serverless scripts and functions for various projects. Easily access and integrate these scripts into your projects by linking to the hosted GitHub Pages. Simplify your development process with a repository dedicated to sharing and managing serverless code snippets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
