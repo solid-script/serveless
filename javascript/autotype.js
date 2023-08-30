@@ -1,34 +1,41 @@
-let i = 0;
-let speed = 50;
+class AutoType {
+  constructor(techArray, targetElementId, speed) {
+    this.i = 0;
+    this.speed = speed || 50;
+    this.tech = techArray || [];
+    this.currentIndex = 0;
+    this.targetElementId = targetElementId || "demo";
+    this.startTyping();
+  }
 
-let tech = ['Python', 'Javascript'];
-let currentIndex = 0;
-
-function typeWriter() {
-  if (currentIndex < tech.length) {
-    if (i < tech[currentIndex].length) {
-      document.getElementById("demo").innerHTML += tech[currentIndex].charAt(i);
-      i++;
-      setTimeout(typeWriter, speed);
-    } else {
-      setTimeout(function() {
-        eraseText();
-      }, speed * 3); 
+  autoType() {
+    if (this.currentIndex < this.tech.length) {
+      if (this.i < this.tech[this.currentIndex].length) {
+        document.getElementById(this.targetElementId).innerHTML += this.tech[this.currentIndex].charAt(this.i);
+        this.i++;
+        setTimeout(() => this.autoType(), this.speed);
+      } else {
+        setTimeout(() => this.eraseText(), this.speed * 3);
+      }
     }
   }
-}
 
-function eraseText() {
-  if (i >= 0) {
-    let currentText = tech[currentIndex].substring(0, i);
-    document.getElementById("demo").innerHTML = currentText;
-    i--;
-    setTimeout(eraseText, speed);
-  } else {
-    currentIndex = (currentIndex + 1) % tech.length;
-    i = 0;
-    setTimeout(typeWriter, speed);
+  eraseText() {
+    if (this.i >= 0) {
+      let currentText = this.tech[this.currentIndex].substring(0, this.i);
+      document.getElementById(this.targetElementId).innerHTML = currentText;
+      this.i--;
+      setTimeout(() => this.eraseText(), this.speed);
+    } else {
+      this.currentIndex = (this.currentIndex + 1) % this.tech.length;
+      this.i = 0;
+      setTimeout(() => this.autoType(), this.speed);
+    }
+  }
+
+  startTyping() {
+    this.autoType();
   }
 }
 
-typeWriter();
+export default AutoType;
