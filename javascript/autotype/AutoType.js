@@ -12,6 +12,7 @@ class AutoType {
   }
 
   autoType() {
+    if (!this.isAnimating) return;
     if (this.currentIndex < this.tech.length) {
       if (this.i < this.tech[this.currentIndex].length) {
         const newText = this.targetElement.innerHTML + this.tech[this.currentIndex].charAt(this.i);
@@ -25,6 +26,7 @@ class AutoType {
   }
 
   eraseText() {
+    if (!this.isAnimating) return;
     if (this.i >= 0) {
       let currentText = this.tech[this.currentIndex].substring(0, this.i);
       this.targetElement.innerHTML = currentText;
