@@ -1,6 +1,7 @@
 class AutoType {
   constructor(techArray, targetElementId, speed) {
     this.i = 0;
+    this.isAnimating = true; 
     this.speed = speed || 50;
     this.tech = techArray || [];
     this.currentIndex = 0;
@@ -38,6 +39,9 @@ class AutoType {
 
   startTyping() {
     this.autoType();
+  }
+  stopAnimation() {
+    this.isAnimating = false; 
   }
 }
 
