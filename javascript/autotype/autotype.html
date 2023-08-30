@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoType Example</title>
+</head>
+<body>
+  <div id="demo"></div>
+  <script type="module">
+    import AutoType from 'https://cdn.jsdelivr.net/gh/solid-script/serveless/javascript/AutoType.js';
+
+    const techArray = [
+      "Texto 1 que se autotipea",
+      "Texto 2 que se autotipea",
+      "Texto 3 que se autotipea"
+      // Agrega más textos si es necesario
+    ];
+
+    const autoTyper = new AutoType(techArray, "demo", 50);
+  </script>
+</body>
+</html>
