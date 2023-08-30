@@ -38,4 +38,4 @@ class AutoType {
   }
 }
 
-export default AutoType;
+window.AutoType = AutoType;
