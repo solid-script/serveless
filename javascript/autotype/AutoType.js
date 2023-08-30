@@ -5,13 +5,16 @@ class AutoType {
     this.tech = techArray || [];
     this.currentIndex = 0;
     this.targetElementId = targetElementId || "demo";
+    this.targetElement = document.getElementById(this.targetElementId);
+    this.originalHtml = this.targetElement.innerHTML;
     this.startTyping();
   }
 
   autoType() {
     if (this.currentIndex < this.tech.length) {
       if (this.i < this.tech[this.currentIndex].length) {
-        document.getElementById(this.targetElementId).innerHTML += this.tech[this.currentIndex].charAt(this.i);
+        const newText = this.targetElement.innerHTML + this.tech[this.currentIndex].charAt(this.i);
+        this.targetElement.innerHTML = newText;
         this.i++;
         setTimeout(() => this.autoType(), this.speed);
       } else {
@@ -23,7 +26,7 @@ class AutoType {
   eraseText() {
     if (this.i >= 0) {
       let currentText = this.tech[this.currentIndex].substring(0, this.i);
-      document.getElementById(this.targetElementId).innerHTML = currentText;
+      this.targetElement.innerHTML = currentText;
       this.i--;
       setTimeout(() => this.eraseText(), this.speed);
     } else {
@@ -37,5 +40,5 @@ class AutoType {
     this.autoType();
   }
 }
-export default AutoType;
 
+export default AutoType;

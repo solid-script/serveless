@@ -1,14 +1,14 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  entry: {
-    autoType: './javascript/autotype/AutoType.js',
-    //otroArchivo: './src/otroArchivo.js',
-    // Agrega más entradas según sea necesario
-  },
+  entry: './javascript/autotype/AutoType.js',
   output: {
-    filename: '[name].min.js',
+    filename: 'AutoType.min.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  mode: 'production'
+  mode: 'production',
+  optimization: {
+    minimizer: [new TerserPlugin()],
+  },
 };
